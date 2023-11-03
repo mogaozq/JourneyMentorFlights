@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyMentorFlights", "JourneyMentorFlights\JourneyMentorFlights.csproj", "{E48D6C76-B17B-4A8C-BB2B-EDC482C890B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyMentorFlights.Domain", "JourneyMentorFlights.Domain\JourneyMentorFlights.Domain.csproj", "{67664F5F-3D68-461C-B6F9-77ADF9E0C866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyMentorFlights.Application", "JourneyMentorFlights.Application\JourneyMentorFlights.Application.csproj", "{48815A6E-C421-48F1-8AE7-242BA8667D14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyMentorFlights.Infrastructure", "JourneyMentorFlights.Infrastructure\JourneyMentorFlights.Infrastructure.csproj", "{991B9712-18AE-4CAD-B27B-53DBE5545C4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JourneyMentorFlights.Api", "JourneyMentorFlights.Api\JourneyMentorFlights.Api.csproj", "{5E0FAAFE-3849-4952-8A85-C0FD4AC56415}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E48D6C76-B17B-4A8C-BB2B-EDC482C890B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E48D6C76-B17B-4A8C-BB2B-EDC482C890B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E48D6C76-B17B-4A8C-BB2B-EDC482C890B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E48D6C76-B17B-4A8C-BB2B-EDC482C890B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67664F5F-3D68-461C-B6F9-77ADF9E0C866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67664F5F-3D68-461C-B6F9-77ADF9E0C866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67664F5F-3D68-461C-B6F9-77ADF9E0C866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67664F5F-3D68-461C-B6F9-77ADF9E0C866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48815A6E-C421-48F1-8AE7-242BA8667D14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48815A6E-C421-48F1-8AE7-242BA8667D14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48815A6E-C421-48F1-8AE7-242BA8667D14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48815A6E-C421-48F1-8AE7-242BA8667D14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{991B9712-18AE-4CAD-B27B-53DBE5545C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{991B9712-18AE-4CAD-B27B-53DBE5545C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{991B9712-18AE-4CAD-B27B-53DBE5545C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{991B9712-18AE-4CAD-B27B-53DBE5545C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E0FAAFE-3849-4952-8A85-C0FD4AC56415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E0FAAFE-3849-4952-8A85-C0FD4AC56415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E0FAAFE-3849-4952-8A85-C0FD4AC56415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E0FAAFE-3849-4952-8A85-C0FD4AC56415}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
