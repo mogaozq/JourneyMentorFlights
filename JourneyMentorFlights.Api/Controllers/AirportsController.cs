@@ -15,7 +15,7 @@ namespace JourneyMentorFlights.Api.Controllers
         }
 
         [HttpGet(Name = "GetAirports")]
-        public IActionResult Get()
+        public IActionResult? Get()
         {
             return null;
         }

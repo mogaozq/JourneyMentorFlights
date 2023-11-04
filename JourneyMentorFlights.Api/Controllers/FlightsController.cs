@@ -14,7 +14,7 @@ namespace JourneyMentorFlights.Api.Controllers
         }
 
         [HttpGet(Name = "GetFlights")]
-        public IActionResult Get()
+        public IActionResult? Get()
         {
             return null;
         }
