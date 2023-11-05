@@ -8,7 +8,7 @@ namespace JourneyMentorFlights.Api
         {
             using var scope = app.Services.CreateScope();
 
-            var dataDownloaderService = scope.ServiceProvider.GetRequiredService<IDataDownloaderService>();
+            var dataDownloaderService = scope.ServiceProvider.GetRequiredService<IDataSyncronizerService>();
 
             //await dataDownloaderService.DownloadAndSaveAirports();
             //dataDownloaderService.DownloadAndSaveAirports();

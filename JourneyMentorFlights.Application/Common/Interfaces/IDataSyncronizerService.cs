@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JourneyMentorFlights.Application.Common.Interfaces
 {
-    public interface IDataDownloaderService
+    public interface IDataSyncronizerService
     {
         Task DownloadAndSaveAirports();
         Task DownloadAndSaveFlights(int limit, int offset);

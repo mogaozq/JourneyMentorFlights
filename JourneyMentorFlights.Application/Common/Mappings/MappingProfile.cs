@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JourneyMentorFlights.Application.Airports.Dtos;
 using JourneyMentorFlights.Application.Flights.Dtos;
 using JourneyMentorFlights.Domain.Entities;
 using JourneyMentorFlights.Domain.ValueObjects;
@@ -20,6 +21,9 @@ namespace JourneyMentorFlights.Application.Common.Mappings
             CreateMap<Airline, AirlineDto>();
             CreateMap<FlightDetails, FlightDetailsDto>();
             CreateMap<FlightLiveDetails, FlightLiveDetailsDto>();
+
+            CreateMap<Airport, AirportDto>();
+
         }
     }
 }

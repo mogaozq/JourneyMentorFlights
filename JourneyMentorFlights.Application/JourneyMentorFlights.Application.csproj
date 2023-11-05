@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Airports\Commands\" />
     <Folder Include="Flights\Commands\" />
     <Folder Include="Common\Implemetations\" />
   </ItemGroup>
