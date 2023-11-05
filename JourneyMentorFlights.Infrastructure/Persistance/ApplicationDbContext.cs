@@ -1,4 +1,4 @@
-﻿using JourneyMentorFlights.Application.Services;
+﻿using JourneyMentorFlights.Application.Common.Interfaces;
 using JourneyMentorFlights.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,8 +24,8 @@ namespace JourneyMentorFlights.Infrastructure.Persistance
         }
 
         public DbSet<Flight> Flights { get; set; }
-        public DbSet<Flight> Airports { get; set; }
+        public DbSet<Airport> Airports { get; set; }
 
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken) => SaveChangesAsync(cancellationToken);
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken) => base.SaveChangesAsync(cancellationToken);
     }
 }

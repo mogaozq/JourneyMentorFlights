@@ -13,34 +13,38 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack
     {
         private readonly HttpClient _HttpClient;
         private const string accessKey = "4e042e4e544cdf79a5e173af4bc7046d";
+        private const string _baseUrl = "http://api.aviationstack.com/v1";
 
         public AviationStackApiV1(IHttpClientFactory httpClientFactory)
         {
             _HttpClient = httpClientFactory.CreateClient();
-            _HttpClient.BaseAddress = new Uri("https://api.aviationstack.com/v1");
+            _HttpClient.BaseAddress = new Uri(_baseUrl);
         }
 
         public async Task<PaginatedList<Flight>?> GetFlightsAsync(PaginationParameters paginationParameters)
         {
-  
-                var queryString = $"access_key={accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
-                var response = await _HttpClient.GetFromJsonAsync<PaginatedList<Flight>>($"flights?{queryString}");
-
-                return response;
-        }
-
-        public async Task<PaginatedList<Airline>?> GetAirlinesAsync(PaginationParameters paginationParameters)
-        {
             var queryString = $"access_key={accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
-            var response = await _HttpClient.GetFromJsonAsync<PaginatedList<Airline>>($"airlines?{queryString}");
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"{_baseUrl}/flights?{queryString}"),
+            };
 
-            return response;
+            var response = await _HttpClient.SendAsync(request);
+            return await response.Content.ReadFromJsonAsync<PaginatedList<Flight>>();
         }
 
         public async Task<PaginatedList<Airport>?> GetAirportsAsync(PaginationParameters paginationParameters)
         {
             var queryString = $"access_key={accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
-            return await _HttpClient.GetFromJsonAsync<PaginatedList<Airport>>($"airports?{queryString}");
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"{_baseUrl}/airports?{queryString}"),
+            };
+
+            var response = await _HttpClient.SendAsync(request);
+            return await response.Content.ReadFromJsonAsync<PaginatedList<Airport>>();
         }
 
     }

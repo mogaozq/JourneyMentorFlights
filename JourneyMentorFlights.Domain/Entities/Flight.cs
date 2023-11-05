@@ -9,29 +9,13 @@ namespace JourneyMentorFlights.Domain.Entities
 {
     public class Flight
     {
-        public string FlightNumber { get; set; }
-        public string FlightStatus { get; set; }
-        public DateTime FlightDate { get; set; }
-        public string IataFlightNumber { get; set; }
-        public string IcaoFlightNumber { get; set; }
-
-        public int ArrivalAirportId { get; set; }
-        public Airport ArrivalAirport { get; set; }
-        public DateTimeOffset ScheduledArrival { get; set; }
-        public DateTimeOffset EstimatedArrival { get; set; }
-        public DateTimeOffset ActualArrival { get; set; }
-        public DateTimeOffset EstimatedRunwayArrival { get; set; }
-        public DateTimeOffset ActualRunwayArrival { get; set; }
-
-        public int DepartureAirportId { get; set; }
-        public Airport DepartureAirport { get; set; }
-        public DateTimeOffset ScheduledDeparture { get; set; }
-        public DateTimeOffset EstimatedDeparture { get; set; }
-        public DateTimeOffset ActualDeparture { get; set; }
-        public DateTimeOffset EstimatedRunwayDeparture { get; set; }
-        public DateTimeOffset ActualRunwayDeparture { get; set; }
-
+        public int Id { get; set; }
+        public string FlightDate { get; set; }
+        public string Status { get; set; }
+        public ArrivalInfo Arrival { get; set; }
+        public DepartureInfo Departure { get; set; }
         public Airline Airline { get; set; }
-        public FlightLiveDetails Live { get; set; }
+        public FlightDetails FlightDetails { get; set; }
+        public FlightLiveDetails LiveDetails { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using JourneyMentorFlights.Domain.Entities;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -13,18 +14,13 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Configurations
     {
         public void Configure(EntityTypeBuilder<Flight> builder)
         {
-            builder.HasKey(e => e.FlightNumber);
-
-            builder.HasOne(e => e.ArrivalAirport)
-                .WithMany(a => a.ArivalFlights)
-                .HasForeignKey(f => f.ArrivalAirportId);
-
-            builder.HasOne(e => e.DepartureAirport)
-                .WithMany(a => a.DepartureFlights)
-                .HasForeignKey(f => f.DepartureAirportId);
-
+            builder.HasKey(f => f.Id);
+            builder.OwnsOne(f => f.Arrival);
+            builder.OwnsOne(f => f.Departure);
             builder.OwnsOne(f => f.Airline);
-            builder.OwnsOne(f => f.Live);
+            builder.OwnsOne(f => f.FlightDetails)
+                .OwnsOne(fd => fd.Codeshared);
+            builder.OwnsOne(f => f.LiveDetails);
         }
     }
 }

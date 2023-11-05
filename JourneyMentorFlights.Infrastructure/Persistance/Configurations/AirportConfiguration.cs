@@ -15,9 +15,9 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Configurations
         {
             builder.HasKey(e => e.Id);
 
-            builder.HasAlternateKey(e => e.IataCode);
+            builder.Property(e => e.Id)
+                .ValueGeneratedNever();
 
-            builder.HasAlternateKey(e => e.IcaoCode);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack.Models
         public string longitude { get; set; }
         public string airport_name { get; set; }
         public string country_name { get; set; }
-        public object phone_number { get; set; }
+        public string phone_number { get; set; }
         public string timezone { get; set; }
     }
 

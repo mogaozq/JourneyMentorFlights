@@ -1,3 +1,4 @@
+using JourneyMentorFlights.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JourneyMentorFlights.Api.Controllers
@@ -6,18 +7,17 @@ namespace JourneyMentorFlights.Api.Controllers
     [Route("[controller]")]
     public class AirportsController : ControllerBase
     {
-
-        private readonly ILogger<AirportsController> _logger;
-
-        public AirportsController(ILogger<AirportsController> logger)
+        [HttpGet(Name = "GetAirports")]
+        public async Task<IActionResult?> GetAsync()
         {
-            _logger = logger;
+            throw new NotImplementedException();
         }
 
-        [HttpGet(Name = "GetAirports")]
-        public IActionResult? Get()
+        [HttpPost("SyncAirports", Name = "SyncAirports")]
+        public async Task<IActionResult?> SyncAirports([FromServices] IDataDownloaderService dataDownloaderService)
         {
-            return null;
+            await dataDownloaderService.DownloadAndSaveAirports();
+            return NoContent();
         }
     }
 }

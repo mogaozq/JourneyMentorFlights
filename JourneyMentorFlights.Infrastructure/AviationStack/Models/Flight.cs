@@ -34,35 +34,35 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack.Models
 
     public class Arrival
     {
-        public string airport { get; set; }
-        public string timezone { get; set; }
-        public string iata { get; set; }
-        public string icao { get; set; }
-        public string terminal { get; set; }
-        public string gate { get; set; }
-        public string baggage { get; set; }
-        public int delay { get; set; }
-        public DateTime scheduled { get; set; }
-        public DateTime estimated { get; set; }
-        public object actual { get; set; }
-        public object estimated_runway { get; set; }
-        public object actual_runway { get; set; }
+        public string? airport { get; set; }
+        public string? timezone { get; set; }
+        public string? iata { get; set; }
+        public string? icao { get; set; }
+        public string? terminal { get; set; }
+        public string? gate { get; set; }
+        public string? baggage { get; set; }
+        public int? delay { get; set; }
+        public DateTime? scheduled { get; set; }
+        public DateTime? estimated { get; set; }
+        public DateTime? actual { get; set; }
+        public DateTime? estimated_runway { get; set; }
+        public DateTime? actual_runway { get; set; }
     }
 
     public class Departure
     {
-        public string airport { get; set; }
-        public string timezone { get; set; }
-        public string iata { get; set; }
-        public string icao { get; set; }
-        public string terminal { get; set; }
-        public string gate { get; set; }
-        public int delay { get; set; }
-        public DateTime scheduled { get; set; }
-        public DateTime estimated { get; set; }
-        public DateTime actual { get; set; }
-        public DateTime estimated_runway { get; set; }
-        public DateTime actual_runway { get; set; }
+        public string? airport { get; set; }
+        public string? timezone { get; set; }
+        public string? iata { get; set; }
+        public string? icao { get; set; }
+        public string? terminal { get; set; }
+        public string? gate { get; set; }
+        public int? delay { get; set; }
+        public DateTime? scheduled { get; set; }
+        public DateTime? estimated { get; set; }
+        public DateTime? actual { get; set; }
+        public DateTime? estimated_runway { get; set; }
+        public DateTime? actual_runway { get; set; }
     }
 
     public class FlightDetails
@@ -70,19 +70,27 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack.Models
         public string number { get; set; }
         public string iata { get; set; }
         public string icao { get; set; }
-        public object codeshared { get; set; }
+        public Codeshared codeshared { get; set; }
     }
-
+    public class Codeshared
+    {
+        public string? airline_name { get; set; }
+        public string? airline_iata { get; set; }
+        public string? airline_icao { get; set; }
+        public string? flight_number { get; set; }
+        public string? flight_iata { get; set; }
+        public string? flight_icao { get; set; }
+    }
     public class LiveInfo
     {
-        public DateTime updated { get; set; }
-        public double latitude { get; set; }
-        public double longitude { get; set; }
-        public double altitude { get; set; }
-        public double direction { get; set; }
-        public double speed_horizontal { get; set; }
-        public double speed_vertical { get; set; }
-        public bool is_ground { get; set; }
+        public DateTime? updated { get; set; }
+        public decimal? latitude { get; set; }
+        public decimal? longitude { get; set; }
+        public decimal? altitude { get; set; }
+        public decimal? direction { get; set; }
+        public decimal? speed_horizontal { get; set; }
+        public decimal? speed_vertical { get; set; }
+        public bool? is_ground { get; set; }
     }
 
 
