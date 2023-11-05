@@ -3,17 +3,16 @@ using System;
 using JourneyMentorFlights.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
+namespace JourneyMentorFlights.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231104223705_initia4")]
-    partial class initia4
+    [Migration("20231105163955_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,9 +20,7 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.13")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
-
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("JourneyMentorFlights.Domain.Entities.Airport", b =>
                 {
@@ -32,42 +29,42 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
 
                     b.Property<string>("AirportName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CityIataCode")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CountryIso2")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("CountryName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("GeonameId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Gmt")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("IataCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("IcaoCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<decimal?>("Latitude")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<decimal?>("Longitude")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Timezone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -80,15 +77,13 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
                     b.Property<string>("FlightDate")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -103,13 +98,13 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<string>("Iata")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Icao")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Name")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.HasKey("FlightId");
 
@@ -125,43 +120,43 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<DateTime?>("Actual")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<DateTime?>("ActualRunway")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Airport")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Baggage")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<int?>("Delay")
                                 .HasColumnType("int");
 
                             b1.Property<DateTime?>("Estimated")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<DateTime?>("EstimatedRunway")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Gate")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("IATA")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("ICAO")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<DateTime?>("Scheduled")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Terminal")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Timezone")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.HasKey("FlightId");
 
@@ -177,40 +172,40 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<DateTime?>("Actual")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<DateTime?>("ActualRunway")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Airport")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<int?>("Delay")
                                 .HasColumnType("int");
 
                             b1.Property<DateTime?>("Estimated")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<DateTime?>("EstimatedRunway")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Gate")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("IATA")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("ICAO")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<DateTime?>("Scheduled")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.Property<string>("Terminal")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Timezone")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.HasKey("FlightId");
 
@@ -226,13 +221,13 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<string>("Iata")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Icao")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.Property<string>("Number")
-                                .HasColumnType("nvarchar(max)");
+                                .HasColumnType("longtext");
 
                             b1.HasKey("FlightId");
 
@@ -247,22 +242,22 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                         .HasColumnType("int");
 
                                     b2.Property<string>("AirlineIata")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.Property<string>("AirlineIcao")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.Property<string>("AirlineName")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.Property<string>("FlightIata")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.Property<string>("FlightIcao")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.Property<string>("FlightNumber")
-                                        .HasColumnType("nvarchar(max)");
+                                        .HasColumnType("longtext");
 
                                     b2.HasKey("FlightDetailsFlightId");
 
@@ -282,28 +277,28 @@ namespace JourneyMentorFlights.Infrastructure.Persistance.Migrations
                                 .HasColumnType("int");
 
                             b1.Property<decimal?>("Altitude")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<decimal?>("Direction")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<bool?>("IsGround")
-                                .HasColumnType("bit");
+                                .HasColumnType("tinyint(1)");
 
                             b1.Property<decimal?>("Latitude")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<decimal?>("Longitude")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<decimal?>("SpeedHorizontal")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<decimal?>("SpeedVertical")
-                                .HasColumnType("decimal(18,2)");
+                                .HasColumnType("decimal(65,30)");
 
                             b1.Property<DateTime?>("Updated")
-                                .HasColumnType("datetime2");
+                                .HasColumnType("datetime(6)");
 
                             b1.HasKey("FlightId");
 

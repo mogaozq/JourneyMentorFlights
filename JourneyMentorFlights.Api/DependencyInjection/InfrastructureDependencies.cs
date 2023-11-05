@@ -13,7 +13,10 @@ namespace JourneyMentorFlights.Api.DependencyInjection
         {
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
+                //options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
+
+                var connectionString = configuration["ConnectionStrings:DefaultConnection"];
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
 
             services.AddTransient<IDataSyncronizerService, DataSyncronizerService>();
