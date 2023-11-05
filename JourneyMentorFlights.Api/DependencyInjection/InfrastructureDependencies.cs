@@ -1,6 +1,7 @@
 ﻿
 using JourneyMentorFlights.Application.Common.Interfaces;
 using JourneyMentorFlights.Infrastructure.AviationStack;
+using JourneyMentorFlights.Infrastructure.AviationStack.Options;
 using JourneyMentorFlights.Infrastructure.Persistance;
 using JourneyMentorFlights.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,7 @@ namespace JourneyMentorFlights.Api.DependencyInjection
 
             services.AddTransient<IDataSyncronizerService, DataSyncronizerService>();
             services.AddTransient<AviationStackApiV1>();
+            services.Configure<AviationStackApiOptions>(configuration.GetSection(nameof(AviationStackApiOptions)));
         }
     }
 }

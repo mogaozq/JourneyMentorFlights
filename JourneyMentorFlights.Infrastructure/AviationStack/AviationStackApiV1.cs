@@ -1,4 +1,6 @@
 ﻿using JourneyMentorFlights.Infrastructure.AviationStack.Models;
+using JourneyMentorFlights.Infrastructure.AviationStack.Options;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +14,19 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack
     public class AviationStackApiV1
     {
         private readonly HttpClient _HttpClient;
-        private const string accessKey = "4e042e4e544cdf79a5e173af4bc7046d";
+        private readonly string _accessKey;
         private const string _baseUrl = "http://api.aviationstack.com/v1";
 
-        public AviationStackApiV1(IHttpClientFactory httpClientFactory)
+        public AviationStackApiV1(IHttpClientFactory httpClientFactory, IOptions<AviationStackApiOptions> options)
         {
             _HttpClient = httpClientFactory.CreateClient();
             _HttpClient.BaseAddress = new Uri(_baseUrl);
+            _accessKey = options.Value.AccessKey;
         }
 
         public async Task<PaginatedList<Flight>?> GetFlightsAsync(PaginationParameters paginationParameters)
         {
-            var queryString = $"access_key={accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
+            var queryString = $"access_key={_accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
@@ -36,7 +39,7 @@ namespace JourneyMentorFlights.Infrastructure.AviationStack
 
         public async Task<PaginatedList<Airport>?> GetAirportsAsync(PaginationParameters paginationParameters)
         {
-            var queryString = $"access_key={accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
+            var queryString = $"access_key={_accessKey}&limit={paginationParameters.limit}&offset={paginationParameters.offset}";
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,

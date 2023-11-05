@@ -10,6 +10,7 @@ services:
     environment:
       - DOTNET_RUNNING_IN_CONTAINER=true
       - ConnectionStrings__DefaultConnection=Server=mysql-service;Database=JournyMentorFlights;User=root;Password=my-secret-pw;
+      - AviationStackApiOptions__AccessKey=4e042e4e544cdf79a5e173af4bc7046d
     depends_on:
       - mysql-service
   mysql-service:
