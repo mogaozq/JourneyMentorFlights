@@ -1,9 +1,6 @@
-using JourneyMentorFlights.Application.Airports.Commands;
-using JourneyMentorFlights.Application.Common.Interfaces;
 using JourneyMentorFlights.Application.Flights.Commands;
 using JourneyMentorFlights.Application.Flights.Dtos;
 using JourneyMentorFlights.Application.Flights.Queries;
-using JourneyMentorFlights.Domain.Entities;
 using JourneyMentorFlights.Infrastructure.Common.Pagination;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
