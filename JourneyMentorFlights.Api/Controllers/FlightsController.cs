@@ -7,6 +7,7 @@ using JourneyMentorFlights.Domain.Entities;
 using JourneyMentorFlights.Infrastructure.Common.Pagination;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace JourneyMentorFlights.Api.Controllers
 {
@@ -45,7 +46,7 @@ namespace JourneyMentorFlights.Api.Controllers
         /// <param name="dataDownloaderService"></param>
         /// <returns></returns>
         [HttpPost("SyncFlights", Name = "SyncFlights")]
-        public async Task<IActionResult?> SyncFlights(int limit, int offset)
+        public async Task<IActionResult?> SyncFlights([Required, Range(1, 100)] int limit,[Range(1, int.MaxValue)] int offset)
         {
             await _mediator.Send(new SyncFlightsCommand()
             {
