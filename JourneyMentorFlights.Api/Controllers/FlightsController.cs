@@ -1,4 +1,6 @@
+using JourneyMentorFlights.Application.Airports.Commands;
 using JourneyMentorFlights.Application.Common.Interfaces;
+using JourneyMentorFlights.Application.Flights.Commands;
 using JourneyMentorFlights.Application.Flights.Dtos;
 using JourneyMentorFlights.Application.Flights.Queries;
 using JourneyMentorFlights.Domain.Entities;
@@ -43,9 +45,14 @@ namespace JourneyMentorFlights.Api.Controllers
         /// <param name="dataDownloaderService"></param>
         /// <returns></returns>
         [HttpPost("SyncFlights", Name = "SyncFlights")]
-        public async Task<IActionResult?> SyncFlights([FromServices] IDataDownloaderService dataDownloaderService, int limit, int offset)
+        public async Task<IActionResult?> SyncFlights(int limit, int offset)
         {
-            await dataDownloaderService.DownloadAndSaveFlights(limit, offset);
+            await _mediator.Send(new SyncFlightsCommand()
+            {
+                Offset = offset,
+                Limit = limit
+            });
+
             return NoContent();
         }
     }

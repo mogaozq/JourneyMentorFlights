@@ -10,7 +10,6 @@ namespace JourneyMentorFlights.Infrastructure.Common.Pagination
 {
     public class PaginatedList<T>
     {
-        public List<T> Items { get; }
         public int PageIndex { get; }
         public int TotalPages { get; }
         public int TotalCount { get; }
@@ -18,6 +17,8 @@ namespace JourneyMentorFlights.Infrastructure.Common.Pagination
 
         public bool HasPreviousPage => PageIndex > 1;
         public bool HasNextPage => PageIndex < TotalPages;
+
+        public List<T> Items { get; }
 
         public PaginatedList(List<T> items, int totalCount, int pageIndex, int pageSize)
         {

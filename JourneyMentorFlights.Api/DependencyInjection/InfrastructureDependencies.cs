@@ -16,7 +16,7 @@ namespace JourneyMentorFlights.Api.DependencyInjection
                 options.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
             });
 
-            services.AddTransient<IDataDownloaderService, DataDownloaderService>();
+            services.AddTransient<IDataSyncronizerService, DataSyncronizerService>();
             services.AddTransient<AviationStackApiV1>();
         }
     }

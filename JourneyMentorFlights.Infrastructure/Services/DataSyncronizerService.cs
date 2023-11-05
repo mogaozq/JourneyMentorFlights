@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace JourneyMentorFlights.Infrastructure.Services
 {
-    public class DataDownloaderService : IDataDownloaderService
+    public class DataSyncronizerService : IDataSyncronizerService
     {
         private readonly AviationStackApiV1 _aviationStackApiV1;
         private readonly IApplicationDbContext _dbContext;
 
-        public DataDownloaderService(AviationStackApiV1 aviationStackApiV1, IApplicationDbContext dbContext)
+        public DataSyncronizerService(AviationStackApiV1 aviationStackApiV1, IApplicationDbContext dbContext)
         {
             _aviationStackApiV1 = aviationStackApiV1;
             _dbContext = dbContext;

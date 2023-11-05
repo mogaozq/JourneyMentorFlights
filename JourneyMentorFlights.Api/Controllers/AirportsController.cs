@@ -1,5 +1,13 @@
+using JourneyMentorFlights.Application.Airports.Commands;
+using JourneyMentorFlights.Application.Airports.Dtos;
+using JourneyMentorFlights.Application.Airports.Queries;
 using JourneyMentorFlights.Application.Common.Interfaces;
+using JourneyMentorFlights.Application.Flights.Dtos;
+using JourneyMentorFlights.Application.Flights.Queries;
+using JourneyMentorFlights.Infrastructure.Common.Pagination;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
 
 namespace JourneyMentorFlights.Api.Controllers
 {
@@ -7,16 +15,37 @@ namespace JourneyMentorFlights.Api.Controllers
     [Route("[controller]")]
     public class AirportsController : ControllerBase
     {
-        [HttpGet(Name = "GetAirports")]
-        public async Task<IActionResult?> GetAsync()
+        private readonly IMediator _mediator;
+
+        public AirportsController(IMediator mediator)
         {
-            throw new NotImplementedException();
+            _mediator = mediator;
         }
 
-        [HttpPost("SyncAirports", Name = "SyncAirports")]
-        public async Task<IActionResult?> SyncAirports([FromServices] IDataDownloaderService dataDownloaderService)
+        /// <summary>
+        /// get airports in pagination
+        /// </summary>
+        /// <param name="pageParameters"></param>
+        /// <returns></returns>
+        [HttpGet(Name = "GetAirports")]
+        public async Task<ActionResult<PaginatedList<AirportDto>>> GetAsync([FromQuery] PageParameters pageParameters)
         {
-            await dataDownloaderService.DownloadAndSaveAirports();
+            return await _mediator.Send(new GetPaginatedAirportsQuery()
+            {
+                PageNumber = pageParameters.PageNumber,
+                PageSize = pageParameters.PageSize
+            });
+        }
+
+        /// <summary>
+        /// sync airports data
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("SyncAirports", Name = "SyncAirports")]
+        public async Task<IActionResult?> SyncAirports()
+        {
+            await _mediator.Send(new SyncAirportsCommand());
+
             return NoContent();
         }
     }
