@@ -13,6 +13,7 @@ services:
       - AviationStackApiOptions__AccessKey=4e042e4e544cdf79a5e173af4bc7046d
     depends_on:
       - mysql-service
+    restart: always
   mysql-service:
     image: mysql
     ports:
