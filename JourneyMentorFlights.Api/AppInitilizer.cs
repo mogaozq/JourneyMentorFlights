@@ -1,17 +1,34 @@
 ﻿using JourneyMentorFlights.Application.Common.Interfaces;
+using JourneyMentorFlights.Infrastructure.Persistance;
+using Microsoft.EntityFrameworkCore;
 
 namespace JourneyMentorFlights.Api
 {
     public static class AppInitilizer
     {
-        public static async Task InitilizeAsync(this WebApplication app)
+        public static void MigrateDatabase(this WebApplication app)
         {
             using var scope = app.Services.CreateScope();
 
-            var dataDownloaderService = scope.ServiceProvider.GetRequiredService<IDataSyncronizerService>();
+            try
+            {
+                var services = scope.ServiceProvider;
 
-            //await dataDownloaderService.DownloadAndSaveAirports();
-            //dataDownloaderService.DownloadAndSaveAirports();
+                var context = services.GetRequiredService<ApplicationDbContext>();
+                if (context.Database.IsRelational())
+                {
+                    context.Database.Migrate();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+
+                logger.LogError(ex, "An error occured while migrating or seeding the database");
+
+                throw;
+            }
         }
     }
 }

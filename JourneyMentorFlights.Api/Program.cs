@@ -1,5 +1,7 @@
 using JourneyMentorFlights.Api;
 using JourneyMentorFlights.Api.DependencyInjection;
+using JourneyMentorFlights.Infrastructure.Persistance;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,14 +18,12 @@ builder.Services.AddApplication(builder.Configuration);
 
 var app = builder.Build();
 
-await app.InitilizeAsync();
+//migrate database 
+app.MigrateDatabase();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

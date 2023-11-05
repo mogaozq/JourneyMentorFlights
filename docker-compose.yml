@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  backend-service:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "80:80"
+      - "433:433"
+    environment:
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - ConnectionStrings__DefaultConnection=Server=mysql-service;Database=JournyMentorFlights;User=root;Password=my-secret-pw;
+    depends_on:
+      - mysql-service
+  mysql-service:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: my-secret-pw
